@@ -42,6 +42,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!-- 여기에 번호 받고 sms 받는거 먼저 -->
         <activity android:name="com.helloworld.freshmarketapp.MainActivity"></activity>
         
     </application>
