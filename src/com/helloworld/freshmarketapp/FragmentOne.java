@@ -1,12 +1,5 @@
 package com.helloworld.freshmarketapp;
 
-
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.MapView;
-import com.google.android.gms.maps.model.CameraPosition;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
-
 import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
