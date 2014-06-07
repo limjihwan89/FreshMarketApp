@@ -37,6 +37,7 @@ public class MainActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
           super.onCreate(savedInstanceState);
           setContentView(R.layout.activity_main);
+          
           fragmentManager = getSupportFragmentManager();
           // Initializing
           dataList = new ArrayList<DrawerItem>();
@@ -64,7 +65,8 @@ public class MainActivity extends FragmentActivity {
 
           getActionBar().setDisplayHomeAsUpEnabled(true);
           getActionBar().setHomeButtonEnabled(true);
-
+          getActionBar().setDisplayShowHomeEnabled(true);//erase app icon
+          
           mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
                       R.drawable.ic_drawer, R.string.drawer_open,
                       R.string.drawer_close) {
