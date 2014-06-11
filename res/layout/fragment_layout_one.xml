@@ -23,7 +23,7 @@
             android:text="카테고리" />
 
         <Spinner
-            android:id="@+id/spinner1"
+            android:id="@+id/spinner_search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>
@@ -40,7 +40,7 @@
             android:text="검색" />
 
         <EditText
-            android:id="@+id/editText1"
+            android:id="@+id/EditText_Search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10" >
@@ -70,7 +70,7 @@
                 android:gravity="left">
 
                 <EditText
-                    android:id="@+id/EditText01"
+                    android:id="@+id/EditText_Money_Min"
                     android:layout_width="128dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -107,7 +107,7 @@
                 android:orientation="horizontal" >
 
                 <EditText
-                    android:id="@+id/editText2"
+                    android:id="@+id/EditText_Money_Max"
                     android:layout_width="128dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -130,15 +130,14 @@
         android:layout_height="wrap_content"
         android:gravity="right"
         android:orientation="vertical" >
-
         <Button
-                style="@style/btnStyleOrange"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="10dip"
-                android:gravity="center"
-                android:text="검색" />
-
-    </LinearLayout>
+            android:id="@+id/button_search"
+            style="@style/btnStyleOrange"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dip"
+            android:gravity="center"
+            android:text="검색" />
+</LinearLayout>
 
 </LinearLayout>
