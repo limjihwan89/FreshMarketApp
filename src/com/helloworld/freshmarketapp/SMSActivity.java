@@ -157,7 +157,8 @@ public class SMSActivity extends Activity {
 		public void onClick(View v) {
 			// TODO Auto-generated method stub		
 			System.out.println("디버깅1 : 버튼동작!!!!!!!!!!!!!!!");
-			final String URL = "http://192.168.200.80:8080/HttpTest2/smsTest.jsp";
+			String action = "go";
+			final String URL = "http://192.168.200.56:8080/resources/smsSend.jsp?"+"action="+action +"&msg="+ random +"&rphone="+ getPhoneNum.getText().toString();
 			//bit : 192.168.200.43
 			//home : 192.168.219.103
 			//hotspot : 192.168.43.137
