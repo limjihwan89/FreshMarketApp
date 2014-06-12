@@ -44,8 +44,8 @@ public class SMSReceiverActivity extends Activity {
 			if (bundle.containsKey(SMSReceiver.MESSAGE)){
 				//containsKey() => 주어진 key값이 이 번들의 매핑에 포함이된 경우 true를 리턴
 				String message = bundle.getString(SMSReceiver.MESSAGE);
-				if (message.startsWith("[")) {
-					message = message.substring(8, 14);
+				if (message.startsWith("F")) {
+					message = message.substring(21, 27);
 				} else {
 					message ="잘못된 인증번호";
 				}
