@@ -16,12 +16,12 @@ public class IntroActivity extends Activity{
 		setContentView(R.layout.intro);
 		mHandler.sendEmptyMessageDelayed(0, 1500);
 		ActionBar actionBar = getActionBar();
-        actionBar.hide();
+        actionBar.hide();	
 	}
 	Handler mHandler=new Handler(){
 		@Override
 		public void handleMessage(Message msg) {
-			startActivity(new Intent(IntroActivity.this, MainActivity.class));
+			startActivity(new Intent(IntroActivity.this, SMSActivity.class));
             overridePendingTransition(R.anim.fade, R.anim.hold);
             finish();
 		}		
