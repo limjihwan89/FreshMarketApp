@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#5dcd9d"
+    android:orientation="vertical" >
+       	
+    <TextView
+        android:id="@+id/tv_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="20dp"
+        android:text="카테고리 등록하기" />
+   	
+   	<Spinner
+   	    android:id="@+id/spn_category1"
+   	    android:layout_width="wrap_content"
+   	    android:layout_height="wrap_content"
+   	    android:layout_gravity="center_horizontal"
+   	    android:layout_marginBottom="20dp" />
+   	
+   	<Spinner
+   	    android:id="@+id/spn_category2"
+   	    android:layout_width="wrap_content"
+   	    android:layout_height="wrap_content"
+   	    android:layout_gravity="center_horizontal"
+   	    android:layout_marginBottom="197dp" />
+   		
+   	<LinearLayout
+   	    android:layout_width="match_parent"
+   	    android:layout_height="wrap_content"
+   	    android:gravity="center_horizontal" >
+
+   	    <Button
+   	        android:id="@+id/btn_previous3"
+   	        android:layout_width="wrap_content"
+   	        android:layout_height="wrap_content"
+   	        android:layout_marginRight="100dp"
+   	        android:text="Previous" />
+
+   	    <Button
+   	        android:id="@+id/btn_next4"
+   	        android:layout_width="wrap_content"
+   	        android:layout_height="wrap_content"
+   	        android:text="Next" />
+   	</LinearLayout>
+
+</LinearLayout>
