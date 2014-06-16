@@ -55,7 +55,7 @@
             </intent-filter>
         </receiver>
         <activity android:name="com.helloworld.freshmarketapp.MainActivity"/>
-        
+        <activity android:name="com.helloworld.freshmarketapp.FourActivity"/>
     </application>
 
 </manifest>
