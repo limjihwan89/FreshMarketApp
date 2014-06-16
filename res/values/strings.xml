@@ -8,13 +8,13 @@
     <string name="drawer_close">Close drawer</string>
 
     <string-array name="categories">
-        <item>카테고리 선택</item>
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
+        <item>대분류 선택</item>
+        <item>의류</item>
+        <item>수입명품</item>
+        <item>패션잡화</item>
+        <item>미용</item>
+        <item>출산/육아</item>
+        <item>모바일</item>
+        <item>컴퓨터</item>
     </string-array>
 </resources>
