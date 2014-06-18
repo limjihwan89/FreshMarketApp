@@ -95,6 +95,7 @@ public class FragmentTwo extends Fragment {
 	 * The mapfragment's id must be removed from the FragmentManager or else if
 	 * the same it is passed on the next time then app will crash
 	 ****/
+	//여기서부터 
 	@Override
 	public void onDestroyView() {
 		super.onDestroyView();
@@ -106,4 +107,5 @@ public class FragmentTwo extends Fragment {
 			mMap = null;
 		}
 	}
+	//여기까지 없으면 그냥 지도 다시 못돌아감
 }

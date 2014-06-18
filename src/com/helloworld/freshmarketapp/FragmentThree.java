@@ -42,8 +42,8 @@ public class FragmentThree extends Fragment {
       Button btRegist;
       */
       
-      //public static final String IMAGE_RESOURCE_ID = "iconResourceID";
-      //public static final String ITEM_NAME = "itemName";
+      public static final String IMAGE_RESOURCE_ID = "iconResourceID";
+      public static final String ITEM_NAME = "itemName";
       
       public FragmentThree() {
     	  
