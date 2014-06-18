@@ -9,8 +9,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-
-
 import com.helloworld.freshmarketapp.SMSActivity;
 import com.helloworld.freshmarketapp.R;
 import com.helloworld.freshmarketapp.SMSReceiver;
@@ -29,31 +27,37 @@ public class SMSReceiverActivity extends Activity {
 		et_sms = (EditText)findViewById(R.id.et_sms);
 		btn_ok = (Button)findViewById(R.id.btn_ok);
 		tv_get = (TextView)findViewById(R.id.tv_get);
-		
-		btn_ok.setOnClickListener(Approval);		
+		System.out.println("여기11");
+		btn_ok.setOnClickListener(Approval);	
+		System.out.println("여기12");
 	}
 	
 	@Override
 	public void onResume(){
+		System.out.println("여기10");
 		super.onResume();
+		System.out.println("여기9");
 		Bundle bundle = getIntent().getExtras();
 		//문자열로 된 키와 여러가지의 타입의 값을 저장 하는 일종의 Map 클래스이다.
 		//Android에서 Activity간에 데이터를 주고 받을 때 Bundle 클래스를 사용하여 여러 가지의 데이터를 전송한다.
 		//기본타입인 int, double, long, String 부터 FloatArray, StringArrayList Serializable, Parcelable 구현한 객체를 전송한다.
 		if (bundle != null){
 			if (bundle.containsKey(SMSReceiver.MESSAGE)){
+				System.out.println("여기13");
 				//containsKey() => 주어진 key값이 이 번들의 매핑에 포함이된 경우 true를 리턴
 				String message = bundle.getString(SMSReceiver.MESSAGE);
+				System.out.println("여기14");
 				if (message.startsWith("F")) {
 					message = message.substring(21, 27);
-				} else {
+				} else { 
 					message ="잘못된 인증번호";
 				}
+				System.out.println("여기15");
 				et_sms.setText(message);
 			}
 		}
 	}
-	
+	//여기 이부분이 잘 안돌아감
 	OnClickListener Approval = new OnClickListener() {
 		@Override
 		public void onClick(View v) {
@@ -64,12 +68,14 @@ public class SMSReceiverActivity extends Activity {
 				System.out.println(et_sms.getText().toString().equals(SMSActivity.random.toString()));
 				
 				if(et_sms.getText().toString().equals(SMSActivity.random.toString())) {
+					System.out.println("여기16");
 					Intent intent = new Intent(SMSReceiverActivity.this, MainActivity.class);
 					startActivity(intent);
 				}
 				else
 					tv_get.setText("인증 실패!!!!!!");
 			}
+			System.out.println("여기17");
 		}	
 	};	
 }
