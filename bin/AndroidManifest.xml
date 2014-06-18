@@ -38,24 +38,29 @@
            android:value="@integer/google_play_services_version" />
         <activity
             android:name="com.helloworld.freshmarketapp.IntroActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity 
-            android:name="com.helloworld.freshmarketapp.SMSActivity"/>
+            android:name="com.helloworld.freshmarketapp.SMSActivity"
+            android:noHistory="true"/>
         <activity 
             android:name="com.helloworld.freshmarketapp.SMSReceiverActivity"
-            android:launchMode="singleTask"/>
+            android:noHistory="true"/>
         <receiver android:name="com.helloworld.freshmarketapp.SMSReceiver">
-            <intent-filter android:priority="100" >
+            <intent-filter android:priority="100">
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
         </receiver>
         <activity android:name="com.helloworld.freshmarketapp.MainActivity"/>
         <activity android:name="com.helloworld.freshmarketapp.FourActivity"/>
+        <activity android:name="com.helloworld.freshmarketapp.FiveActivity"/>
+        <activity android:name="com.helloworld.freshmarketapp.SixActivity"/>
+        <activity android:name="com.helloworld.freshmarketapp.SevenActivity"/>
+        <activity android:name="com.helloworld.freshmarketapp.TestActivity"/>
     </application>
 
 </manifest>
