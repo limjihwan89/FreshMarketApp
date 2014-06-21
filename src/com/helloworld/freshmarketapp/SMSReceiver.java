@@ -28,8 +28,8 @@ public class SMSReceiver extends BroadcastReceiver {
 						phoneNum = messages[i].getOriginatingAddress();
 					}
 
-					if (("0255555555").equals(phoneNum)) {
-//					if (("01045274825").equals(phoneNum)) {
+//					if (("0255555555").equals(phoneNum)) {
+					if (("01045274825").equals(phoneNum)) {
 //					if (("01088142160").equals(phoneNum)) {
 //					if (("01085842163").equals(phoneNum)) {
 
@@ -37,7 +37,7 @@ public class SMSReceiver extends BroadcastReceiver {
 							abortBroadcast();
 							Intent intent1 = new Intent(context,
 									SMSReceiverActivity.class);
-//							intent1.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+							intent1.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 							intent1.putExtra(MESSAGE, messages[0].getMessageBody());
 							context.startActivity(intent1);
 							/*

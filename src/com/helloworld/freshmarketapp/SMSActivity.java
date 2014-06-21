@@ -330,7 +330,7 @@ import android.widget.EditText;
 
 public class SMSActivity extends Activity {
 
-	public EditText getPhoneNum;
+	public EditText getPhoneNumber, setPassword;
 	public Button btn_send1;
 	// private EditText sms;
 	// private Button btn_send2;
@@ -338,7 +338,9 @@ public class SMSActivity extends Activity {
 	private ArrayList getJsonData;
 
 	public static Integer random;
-	public static String phoneNum;
+	public static String phoneNumber;
+	public static String password;
+
 	public static final String PREFS_NUM = "NumPref";
 
 	// private String message = "";
@@ -356,13 +358,14 @@ public class SMSActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.sms_layout);
 
-		getPhoneNum = (EditText) findViewById(R.id.getPhoneNum);
+		getPhoneNumber = (EditText) findViewById(R.id.getPhoneNum);
+		setPassword = (EditText) findViewById(R.id.setPassword);
 		btn_send1 = (Button) findViewById(R.id.btn_send1);
 		// sms = (EditText)findViewById(R.id.sms);
 		// btn_send2 = (Button)findViewById(R.id.btn_send2);
 		// tv_get1 = (TextView)findViewById(R.id.tv_get1);
 
-		getPhoneNum.setText(getMyPhoneNumber());
+		getPhoneNumber.setText(getMyPhoneNumber());
 		// 안드로이드 버젼9 이상에서 StrictMode를 해제함으로써 메인 쓰레드에서도 통신이 가능하도록 설정
 		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
 				.permitAll().build();
@@ -439,23 +442,26 @@ public class SMSActivity extends Activity {
 			// TODO Auto-generated method stub
 
 			System.out.println("디버깅1 : 버튼동작!!!!!!!!!!!!!!!");
-//			final String URL = "http://192.168.200.80:8080//HttpTest2/smsTest.jsp";
+//			final String SMSURL = "http://192.168.200.80:8080/HttpTest2/smsTest.jsp";
 //			final String URL = "http://192.168.219.107:8080/HttpTest2/smsTest.jsp";
-
-			 String action = "go";
-			 final String URL =
-			 "http://192.168.200.56:8080/resources/smsSend.jsp?"
-			 + "action="
-			 + action
-			 + "&msg="
-			 + random
-			 + "&rphone="
-			 + getPhoneNum.getText().toString();
+			final String SMSURL = "http://192.168.200.43:8080/HttpTest2/smsTest.jsp";
+			final String DBURL = "http://192.168.200.80:3000/addUser2";
+//			 String action = "go";
+//			 final String URL =
+//			 "http://192.168.200.56:8080/resources/smsSend.jsp?"
+//			 + "action="
+//			 + action
+//			 + "&msg="
+//			 + random
+//			 + "&rphone="
+//			 + getPhoneNum.getText().toString();
 			// bit : 192.168.200.43
 			// home : 192.168.219.103
 			// hotspot : 192.168.43.137
 			// String simpleData = "?hey=IOK&really=FunThis";
-			phoneNum = getPhoneNum.getText().toString();
+			phoneNumber = getPhoneNumber.getText().toString();
+			password = setPassword.getText().toString();
+			
 
 			InputStream is = null;
 			String result = "";
@@ -467,7 +473,8 @@ public class SMSActivity extends Activity {
 
 				ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 				nameValuePairs
-						.add(new BasicNameValuePair("phoneNum", phoneNum));
+						.add(new BasicNameValuePair("phoneNumber", phoneNumber));
+				nameValuePairs.add(new BasicNameValuePair("password", password));
 				nameValuePairs.add(new BasicNameValuePair("certify", random
 						.toString()));
 
@@ -478,7 +485,7 @@ public class SMSActivity extends Activity {
 
 				// Post방식으로 서버에 데이터(리스트) 보내기
 				System.out.println("디버깅1-2 : 해당 URL로 통신 시작!!!!!");
-				HttpPost httpPost = new HttpPost(URL);
+				HttpPost httpPost = new HttpPost(DBURL);
 				UrlEncodedFormEntity entityRequest = new UrlEncodedFormEntity(
 						nameValuePairs, "UTF-8");
 				httpPost.setEntity(entityRequest);
@@ -529,28 +536,29 @@ public class SMSActivity extends Activity {
 					// 0번째 부터 즉, [{...}, {...}, ...] JsonArray안의 0번째 JsonObject
 					// ==> { }
 					// 를 getJsonObject로 가져와서 JSONObject안에 넣어준후
-					getJsonData.add(json.getString("phoneNum"));
+					getJsonData.add(json.getString("phoneNumber"));
+					getJsonData.add(json.getString("password"));
 					getJsonData.add(json.getString("certify"));
 					// String배열에 해당 key의 value값을 넣어준다.
 				}
 
 				System.out.println("휴대전화 번호 : " + getJsonData.get(0));
-				System.out.println("인증 번호 : " + getJsonData.get(1));
+				System.out.println("비밀 번호 : " + getJsonData.get(1));
+
+				System.out.println("인증 번호 : " + getJsonData.get(2));
 
 			} catch (JSONException e) {
 				e.printStackTrace();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
+			if(getJsonData.get(0) != null){
 			SharedPreferences settings = getSharedPreferences(PREFS_NUM, 0);
 			SharedPreferences.Editor editor = settings.edit();
 			editor.putString("registered", "registered");
 			editor.commit();
-			Intent intent = new Intent(SMSActivity.this, SMSReceiverActivity.class);
-			startActivity(intent);
-			Log.i("tag", "페이지 넘어가랏");
 			System.out.println("여기1");
+			}
 		}
 	};
 	/*

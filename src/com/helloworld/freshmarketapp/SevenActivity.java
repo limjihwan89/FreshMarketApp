@@ -45,7 +45,7 @@ public class SevenActivity extends Activity {
 			if(v.getId() == R.id.btn_previous4) {
 				//finish();
 				Intent intent = new Intent();
-				intent.setClass(SevenActivity.this , TestActivity.class);
+				intent.setClass(SevenActivity.this , SixActivity.class);
 				intent.putExtra("content", content);
 				startActivity(intent);
 			}			
