@@ -47,14 +47,14 @@
         <activity 
             android:name="com.helloworld.freshmarketapp.SMSActivity"
             android:noHistory="true"/>
-        <activity 
-            android:name="com.helloworld.freshmarketapp.SMSReceiverActivity"
-            android:noHistory="true"/>
         <receiver android:name="com.helloworld.freshmarketapp.SMSReceiver">
             <intent-filter android:priority="100">
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
         </receiver>
+        <activity 
+            android:name="com.helloworld.freshmarketapp.SMSReceiverActivity"
+            android:noHistory="false"/>
         <activity android:name="com.helloworld.freshmarketapp.MainActivity"/>
         <activity android:name="com.helloworld.freshmarketapp.FourActivity"/>
         <activity android:name="com.helloworld.freshmarketapp.FiveActivity"/>
