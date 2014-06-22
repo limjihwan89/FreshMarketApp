@@ -44,9 +44,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity 
-            android:name="com.helloworld.freshmarketapp.SMSActivity"
+        <activity android:name="com.helloworld.freshmarketapp.Information"
             android:noHistory="true"/>
+        
         <receiver android:name="com.helloworld.freshmarketapp.SMSReceiver">
             <intent-filter android:priority="100">
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
@@ -60,7 +60,6 @@
         <activity android:name="com.helloworld.freshmarketapp.FiveActivity"/>
         <activity android:name="com.helloworld.freshmarketapp.SixActivity"/>
         <activity android:name="com.helloworld.freshmarketapp.SevenActivity"/>
-        <activity android:name="com.helloworld.freshmarketapp.TestActivity"/>
     </application>
 
 </manifest>
