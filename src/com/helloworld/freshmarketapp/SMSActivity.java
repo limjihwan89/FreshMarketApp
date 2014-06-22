@@ -322,7 +322,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.telephony.TelephonyManager;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -330,16 +329,19 @@ import android.widget.EditText;
 
 public class SMSActivity extends Activity {
 
-	public EditText getPhoneNumber, setPassword;
+	public EditText getPhoneNumber, setPassword, setNickname;
 	public Button btn_send1;
 	// private EditText sms;
 	// private Button btn_send2;
 	// private TextView tv_get1;
-	private ArrayList getJsonData;
+	private ArrayList<String> DBgetJsonData;
+	private ArrayList<String> SMSgetJsonData;
+
 
 	public static Integer random;
 	public static String phoneNumber;
 	public static String password;
+	public static String nickname;
 
 	public static final String PREFS_NUM = "NumPref";
 
@@ -359,7 +361,8 @@ public class SMSActivity extends Activity {
 		setContentView(R.layout.sms_layout);
 
 		getPhoneNumber = (EditText) findViewById(R.id.getPhoneNum);
-		setPassword = (EditText) findViewById(R.id.setPassword);
+//		setPassword = (EditText) findViewById(R.id.setPassword);
+//		setNickname	= (EditText) findViewById(R.id.setNickname);
 		btn_send1 = (Button) findViewById(R.id.btn_send1);
 		// sms = (EditText)findViewById(R.id.sms);
 		// btn_send2 = (Button)findViewById(R.id.btn_send2);
@@ -370,14 +373,14 @@ public class SMSActivity extends Activity {
 		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
 				.permitAll().build();
 		StrictMode.setThreadPolicy(policy);
-		SharedPreferences settings = getSharedPreferences(PREFS_NUM, 0);
-		if (settings.getString("registered", "").toString()
-				.equals("registered")) {
-			System.out.println("여기7");
-			Intent intent2 = new Intent(SMSActivity.this, MainActivity.class);
-			startActivity(intent2);
-			System.out.println("여기8");
-		}
+//		SharedPreferences settings = getSharedPreferences(PREFS_NUM, 0);
+//		if (settings.getString("registered", "").toString()
+//				.equals("registered")) {
+//			System.out.println("여기7");
+//			Intent intent2 = new Intent(SMSActivity.this, MainActivity.class);
+//			startActivity(intent2);
+//			System.out.println("여기8");
+//		}
 		btn_send1.setOnClickListener(sendToServer1);
 		// btn_send2.setOnClickListener(sendToServer2);
 		/*
@@ -443,58 +446,86 @@ public class SMSActivity extends Activity {
 
 			System.out.println("디버깅1 : 버튼동작!!!!!!!!!!!!!!!");
 //			final String SMSURL = "http://192.168.200.80:8080/HttpTest2/smsTest.jsp";
-//			final String URL = "http://192.168.219.107:8080/HttpTest2/smsTest.jsp";
-			final String SMSURL = "http://192.168.200.43:8080/HttpTest2/smsTest.jsp";
-			final String DBURL = "http://192.168.200.80:3000/addUser2";
-//			 String action = "go";
-//			 final String URL =
-//			 "http://192.168.200.56:8080/resources/smsSend.jsp?"
-//			 + "action="
-//			 + action
-//			 + "&msg="
-//			 + random
-//			 + "&rphone="
-//			 + getPhoneNum.getText().toString();
+//			final String SMSURL = "http://192.168.219.107:8080/HttpTest2/smsTest.jsp";
+//			final String SMSURL = "http://192.168.200.43:8080/HttpTest2/smsTest.jsp";
+//			final String DBURL = "http://192.168.200.80:3306/addUser";
+			 String action = "go";
+			 final String SMSURL =
+			 "http://192.168.200.43:8080/resources/smsSend.jsp?"
+			 + "action="
+			 + action
+			 + "&msg="
+			 + random.toString()
+			 + "&rphone="
+			 + getPhoneNumber.getText().toString();
 			// bit : 192.168.200.43
 			// home : 192.168.219.103
 			// hotspot : 192.168.43.137
 			// String simpleData = "?hey=IOK&really=FunThis";
 			phoneNumber = getPhoneNumber.getText().toString();
-			password = setPassword.getText().toString();
+//			nickname = setNickname.getText().toString();
 			
 
-			InputStream is = null;
-			String result = "";
+//			InputStream DBis = null;
+			InputStream SMSis = null;
+
+//			String DBresult = "";
+			String SMSresult = "";
 
 			try {
 				System.out.println("디버깅1-1 : HttpProtocol시작!!!!!!!");
-				HttpClient httpClient = new DefaultHttpClient();
+//				HttpClient DBhttpClient = new DefaultHttpClient();
+				HttpClient SMShttpClient = new DefaultHttpClient();
+
 				// 서버로 보낼 데이터를 리스트에 담기
 
-				ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-				nameValuePairs
+//				ArrayList<NameValuePair> DBnameValuePairs = new ArrayList<NameValuePair>();
+//				DBnameValuePairs
+//						.add(new BasicNameValuePair("phoneNumber", phoneNumber));
+//				DBnameValuePairs.add(new BasicNameValuePair("password", password));
+//				DBnameValuePairs.add(new BasicNameValuePair("nickname", nickname));
+////				DBnameValuePairs.add(new BasicNameValuePair("certify", random
+////						.toString()));
+				ArrayList<NameValuePair> SMSnameValuePairs = new ArrayList<NameValuePair>();
+				SMSnameValuePairs
 						.add(new BasicNameValuePair("phoneNumber", phoneNumber));
-				nameValuePairs.add(new BasicNameValuePair("password", password));
-				nameValuePairs.add(new BasicNameValuePair("certify", random
+//				SMSnameValuePairs.add(new BasicNameValuePair("password", password));
+//				SMSnameValuePairs.add(new BasicNameValuePair("nickname", nickname));
+				SMSnameValuePairs.add(new BasicNameValuePair("certify", random
 						.toString()));
 
 				// http프로토콜 및 프레임 워크 매개변수의 컬렉션
-				HttpParams params = httpClient.getParams();
-				HttpConnectionParams.setConnectionTimeout(params, 5000);
-				HttpConnectionParams.setSoTimeout(params, 5000);
+//				HttpParams DBparams = DBhttpClient.getParams();
+//				HttpConnectionParams.setConnectionTimeout(DBparams, 10000);
+//				HttpConnectionParams.setSoTimeout(DBparams, 10000);
+				HttpParams SMSparams = SMShttpClient.getParams();
+				HttpConnectionParams.setConnectionTimeout(SMSparams, 1000);
+				HttpConnectionParams.setSoTimeout(SMSparams, 1000);
 
 				// Post방식으로 서버에 데이터(리스트) 보내기
 				System.out.println("디버깅1-2 : 해당 URL로 통신 시작!!!!!");
-				HttpPost httpPost = new HttpPost(DBURL);
-				UrlEncodedFormEntity entityRequest = new UrlEncodedFormEntity(
-						nameValuePairs, "UTF-8");
-				httpPost.setEntity(entityRequest);
+//				HttpPost DBhttpPost = new HttpPost(DBURL);
+				HttpPost SMShttpPost = new HttpPost(SMSURL);
+
+//				UrlEncodedFormEntity DBentityRequest = new UrlEncodedFormEntity(
+//						DBnameValuePairs, "UTF-8");
+				UrlEncodedFormEntity SMSentityRequest = new UrlEncodedFormEntity(
+						SMSnameValuePairs, "UTF-8");
+//				DBhttpPost.setEntity(DBentityRequest);
+				SMShttpPost.setEntity(SMSentityRequest);
+
 
 				// 데이터 보내고 응답받기
 				System.out.println("디버깅1-3 : 응답받기!!!!!!!!!");
-				HttpResponse httpResponse = httpClient.execute(httpPost);
-				HttpEntity httpEntity = httpResponse.getEntity();
-				is = httpEntity.getContent();
+//				HttpResponse DBhttpResponse = DBhttpClient.execute(DBhttpPost);
+				HttpResponse SMShttpResponse = SMShttpClient.execute(SMShttpPost);
+
+//				HttpEntity DBhttpEntity = DBhttpResponse.getEntity();
+				HttpEntity SMShttpEntity = SMShttpResponse.getEntity();
+
+//				DBis = DBhttpEntity.getContent();
+				SMSis = SMShttpEntity.getContent();
+
 
 			} catch (ClientProtocolException e) {
 				e.printStackTrace();
@@ -503,17 +534,30 @@ public class SMSActivity extends Activity {
 			}
 			try {
 				System.out.println("디버깅1-4 : 스트림생성!!!!!!");
-				BufferedReader br = new BufferedReader(new InputStreamReader(
-						is, "UTF-8"));
-				StringBuilder sb = new StringBuilder();
+//				BufferedReader DBbr = new BufferedReader(new InputStreamReader(
+//						DBis, "UTF-8"));
+				BufferedReader SMSbr = new BufferedReader(new InputStreamReader(
+						SMSis, "UTF-8"));
+//				StringBuilder DBsb = new StringBuilder();
+				StringBuilder SMSsb = new StringBuilder();
 
-				String line = null;
+
+//				String DBline = null;
+				String SMSline = null;
 				System.out.println("디버깅2 : 서버로부터 데이터 출력 시작");
-				while ((line = br.readLine()) != null) {
-					sb.append(line + "\n");
+//				while (((DBline = DBbr.readLine()) != null) && ((SMSline = SMSbr.readLine()) != null)) {
+//					DBsb.append(DBline + "\n");
+//					SMSsb.append(SMSline + "\n");
+//				}
+//				while ((DBline = DBbr.readLine()) != null) {
+//					DBsb.append(DBline + "\n");
+//				}
+				while ((SMSline = SMSbr.readLine()) != null) {
+					SMSsb.append(SMSline + "\n");
 				}
 
-				result = sb.toString();
+//				DBresult = DBsb.toString();
+				SMSresult = SMSsb.toString();
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
 			} catch (IOException e) {
@@ -522,43 +566,78 @@ public class SMSActivity extends Activity {
 
 			try {
 				System.out.println("디버깅3 : 출력된 데이터 JSON객체화 시작");
-				System.out.println("디버깅4 : 출력된 데이터" + result);
-				JSONObject json = new JSONObject(result);
+//				System.out.println("디버깅4 : 출력된 데이터" + DBresult);
+				System.out.println("디버깅4 : 출력된 데이터" + SMSresult);
+
+//				JSONObject DBjson = new JSONObject(DBresult);
+				JSONObject SMSjson = new JSONObject(SMSresult);
 				// 통째로 읽어온 json데이터를 JSONObject로 받는다.
-				JSONArray jArr = json.getJSONArray("dataSend");
+//				JSONArray DBjArr = DBjson.getJSONArray("dataSend");
+				JSONArray SMSjArr = SMSjson.getJSONArray("dataSend");
+
 				// jsonTest.jsp페이지에서 dataSend라는 key로 put해준 jsonMain을 가져온다.
 				// dataSend는 JsonArray의 key다.
 
 				System.out.println("디버깅5 : JSONArray파싱 시작");
-				for (int i = 0; i < jArr.length(); i++) {
-					getJsonData = new ArrayList();
-					json = jArr.getJSONObject(i);
+//				for (int i = 0, j = 0; i < DBjArr.length() && j < SMSjArr.length() ; i++, j++) {
+//					DBgetJsonData = new ArrayList<String>();
+//					DBjson = DBjArr.getJSONObject(i);
+//					SMSgetJsonData = new ArrayList<String>();
+//					SMSjson = SMSjArr.getJSONObject(j);
+//					// 0번째 부터 즉, [{...}, {...}, ...] JsonArray안의 0번째 JsonObject
+//					// ==> { }
+//					// 를 getJsonObject로 가져와서 JSONObject안에 넣어준후
+//					DBgetJsonData.add(DBjson.getString("phoneNumber"));
+//					DBgetJsonData.add(DBjson.getString("password"));
+//					DBgetJsonData.add(DBjson.getString("nickname"));
+//					SMSgetJsonData.add(SMSjson.getString("phoneNumber"));
+//					SMSgetJsonData.add(SMSjson.getString("password"));
+//					SMSgetJsonData.add(SMSjson.getString("certify"));
+//				}
+//				for (int i = 0; i < DBjArr.length(); i++) {
+//					DBgetJsonData = new ArrayList();
+//					DBjson = DBjArr.getJSONObject(i);
+//					// 0번째 부터 즉, [{...}, {...}, ...] JsonArray안의 0번째 JsonObject
+//					// ==> { }
+//					// 를 getJsonObject로 가져와서 JSONObject안에 넣어준후
+//					DBgetJsonData.add(DBjson.getString("phoneNumber"));
+//					DBgetJsonData.add(DBjson.getString("password"));
+//					DBgetJsonData.add(DBjson.getString("nickname"));
+////					getJsonData.add(DBjson.getString("certify"));
+//					// String배열에 해당 key의 value값을 넣어준다.
+//				}
+				for (int j = 0; j < SMSjArr.length(); j++) {
+					SMSgetJsonData = new ArrayList();
+					SMSjson = SMSjArr.getJSONObject(j);
 					// 0번째 부터 즉, [{...}, {...}, ...] JsonArray안의 0번째 JsonObject
 					// ==> { }
 					// 를 getJsonObject로 가져와서 JSONObject안에 넣어준후
-					getJsonData.add(json.getString("phoneNumber"));
-					getJsonData.add(json.getString("password"));
-					getJsonData.add(json.getString("certify"));
+					SMSgetJsonData.add(SMSjson.getString("phoneNumber"));
+//					SMSgetJsonData.add(DBjson.getString("password"));
+//					SMSgetJsonData.add(DBjson.getString("nickname"));
+					SMSgetJsonData.add(SMSjson.getString("certify"));
 					// String배열에 해당 key의 value값을 넣어준다.
 				}
 
-				System.out.println("휴대전화 번호 : " + getJsonData.get(0));
-				System.out.println("비밀 번호 : " + getJsonData.get(1));
+//				System.out.println("DB휴대전화 번호 : " + DBgetJsonData.get(0));
+//				System.out.println("DB비밀 번호 : " + DBgetJsonData.get(1));
+//				System.out.println("DB닉네임 : " + DBgetJsonData.get(2));
 
-				System.out.println("인증 번호 : " + getJsonData.get(2));
+				System.out.println("SMS휴대전화 번호 : " + SMSgetJsonData.get(0));
+				System.out.println("SMS인증 번호 : " + SMSgetJsonData.get(1));
 
 			} catch (JSONException e) {
 				e.printStackTrace();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			if(getJsonData.get(0) != null){
-			SharedPreferences settings = getSharedPreferences(PREFS_NUM, 0);
-			SharedPreferences.Editor editor = settings.edit();
-			editor.putString("registered", "registered");
-			editor.commit();
-			System.out.println("여기1");
-			}
+//			if(SMSgetJsonData.get(0) != null){
+//			SharedPreferences settings = getSharedPreferences(PREFS_NUM, 0);
+//			SharedPreferences.Editor editor = settings.edit();
+//			editor.putString("registered", "registered");
+//			editor.commit();
+//			System.out.println("여기1");
+//			}
 		}
 	};
 	/*
