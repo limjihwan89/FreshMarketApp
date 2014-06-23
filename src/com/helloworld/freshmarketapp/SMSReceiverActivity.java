@@ -49,7 +49,7 @@ public class SMSReceiverActivity extends Activity {
 				String message = bundle.getString(SMSReceiver.MESSAGE);
 				System.out.println("여기14");
 				if (message.startsWith("F")) {
-					message = message.substring(20, 26);
+					message = message.substring(21, 27);
 				} else {
 					message = "잘못된 인증번호";
 				}
