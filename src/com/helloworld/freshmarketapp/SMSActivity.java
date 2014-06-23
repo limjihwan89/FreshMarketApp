@@ -778,8 +778,7 @@ public class SMSActivity extends Activity {
 			String action = "go";
 
 			System.out.println("디버깅1 : 버튼동작!!!!!!!!!!!!!!!");
-			// final String testURL =
-			// "http://192.168.200.43:8080/HttpTest2/smsTest.jsp";
+			final String testURL = "http://192.168.200.43:8080/HttpTest2/smsTest.jsp";
 			final String dbURL = "http://192.168.200.43:3000/addUser2";
 			final String smsURL = "http://192.168.200.43:8080/resources/smsSend.jsp?"
 					+ "action="
@@ -820,13 +819,14 @@ public class SMSActivity extends Activity {
 				HttpParams smsParams = smsHttpClient.getParams();
 				HttpConnectionParams.setConnectionTimeout(smsParams, 5000);
 				HttpConnectionParams.setSoTimeout(smsParams, 5000);
+				
 				HttpParams dbParams = smsHttpClient.getParams();
 				HttpConnectionParams.setConnectionTimeout(dbParams, 5000);
 				HttpConnectionParams.setSoTimeout(dbParams, 5000);
 
 				// Post방식으로 서버에 데이터(리스트) 보내기
 				System.out.println("디버깅1-2 : 해당 URL로 통신 시작!!!!!");
-				HttpPost smsHttpPost = new HttpPost(smsURL);
+				HttpPost smsHttpPost = new HttpPost(testURL);
 				UrlEncodedFormEntity smsEntityRequest = new UrlEncodedFormEntity(
 						nameValuePairs, "UTF-8");
 				smsHttpPost.setEntity(smsEntityRequest);
@@ -838,8 +838,7 @@ public class SMSActivity extends Activity {
 
 				// 데이터 보내고 응답받기
 				System.out.println("디버깅1-3 : 응답받기!!!!!!!!!");
-				HttpResponse smsHttpResponse = smsHttpClient
-						.execute(smsHttpPost);
+				HttpResponse smsHttpResponse = smsHttpClient.execute(smsHttpPost);
 				HttpEntity smsHttpEntity = smsHttpResponse.getEntity();
 				smsIs = smsHttpEntity.getContent();
 

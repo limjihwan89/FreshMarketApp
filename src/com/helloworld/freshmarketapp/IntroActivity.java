@@ -20,7 +20,8 @@ public class IntroActivity extends Activity {
 	Handler mHandler = new Handler() {
 		@Override
 		public void handleMessage(Message msg) {
-			startActivity(new Intent(IntroActivity.this, SMSActivity.class));
+			//startActivity(new Intent(IntroActivity.this, SMSActivity.class));
+			startActivity(new Intent(IntroActivity.this, MainActivity.class));
 			overridePendingTransition(R.anim.fade, R.anim.hold);
 			finish();
 		}
