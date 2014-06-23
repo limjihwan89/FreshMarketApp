@@ -48,7 +48,7 @@ public class SMSReceiverActivity extends Activity {
 				String message = bundle.getString(SMSReceiver.MESSAGE);
 				System.out.println("여기14");
 				if (message.startsWith("F")) {
-					message = message.substring(21, 27);
+					message = message.substring(20, 26);
 				} else { 
 					message ="잘못된 인증번호";
 				}
@@ -73,7 +73,7 @@ public class SMSReceiverActivity extends Activity {
 					startActivity(intent);
 				}
 				else
-					tv_get.setText("인증 실패!!!!!!");
+					tv_get.setText("인증 실패");
 			}
 			System.out.println("여기17");
 		}	

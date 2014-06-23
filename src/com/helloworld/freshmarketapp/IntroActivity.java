@@ -1,7 +1,5 @@
 package com.helloworld.freshmarketapp;
 
-
-
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
@@ -21,10 +19,9 @@ public class IntroActivity extends Activity{
 	Handler mHandler=new Handler(){
 		@Override
 		public void handleMessage(Message msg) {
-			startActivity(new Intent(IntroActivity.this, Information.class));
+			startActivity(new Intent(IntroActivity.this, MainActivity.class));
             overridePendingTransition(R.anim.fade, R.anim.hold);
             finish();
 		}		
 	};
-
 }

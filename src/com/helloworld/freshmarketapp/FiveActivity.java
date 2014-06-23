@@ -31,8 +31,7 @@ public class FiveActivity extends Activity {
 		btnNext3 = (Button)this.findViewById(R.id.btn_next3);
         
 		btnPrevious2.setOnClickListener(onClick);
-		btnNext3.setOnClickListener(onClick);
-    	
+		btnNext3.setOnClickListener(onClick);   	
     }
     
     OnClickListener onClick = new OnClickListener() {    

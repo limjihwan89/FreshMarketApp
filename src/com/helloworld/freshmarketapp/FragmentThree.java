@@ -20,10 +20,10 @@ public class FragmentThree extends Fragment {
 		
       //ImageView ivIcon;
       //TextView tvItemName;
-	  TextView tvMode1;
-      Switch swMode;
-      TextView tvMode2;
-      Button btnNext1;
+	TextView tvMode1;
+    Switch swMode;
+    TextView tvMode2;
+    Button btnNext1;
       /*
       TextView tvSearch;
       Spinner spSearch;
@@ -40,24 +40,22 @@ public class FragmentThree extends Fragment {
       TextView tvLocation;
       Button btLocation;
       Button btRegist;
-      */
+      */      
+    public static final String IMAGE_RESOURCE_ID = "iconResourceID";
+    public static final String ITEM_NAME = "itemName";
       
-      public static final String IMAGE_RESOURCE_ID = "iconResourceID";
-      public static final String ITEM_NAME = "itemName";
+    public FragmentThree() {   	  
+    }
       
-      public FragmentThree() {
-    	  
-      }
-      
-      @Override
-      public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     	  	
-            View view = inflater.inflate(R.layout.registration_one, container, false);
+          View view = inflater.inflate(R.layout.registration_one, container, false);
             
-            tvMode1 = (TextView)view.findViewById(R.id.tv_mode1);
-            swMode = (Switch)view.findViewById(R.id.sw_mode);
-            tvMode2 = (TextView)view.findViewById(R.id.tv_mode2);
-            btnNext1 = (Button)view.findViewById(R.id.btn_next1);
+          tvMode1 = (TextView)view.findViewById(R.id.tv_mode1);
+          swMode = (Switch)view.findViewById(R.id.sw_mode);
+          tvMode2 = (TextView)view.findViewById(R.id.tv_mode2);
+          btnNext1 = (Button)view.findViewById(R.id.btn_next1);
             /*
             tvSearch = (TextView)view.findViewById(R.id.tv_search);
             spSearch = (Spinner)view.findViewById(R.id.sp_search);
@@ -87,21 +85,20 @@ public class FragmentThree extends Fragment {
             tvItemName.setText(getArguments().getString(ITEM_NAME));
             ivIcon.setImageDrawable(view.getResources().getDrawable(
                         getArguments().getInt(IMAGE_RESOURCE_ID))); */
-          	btnNext1.setOnClickListener(onClick);
+          btnNext1.setOnClickListener(onClick);
           	
-            return view;
+          return view;
       }
       
-      OnClickListener onClick = new OnClickListener() {    
-    	  String mode = "";
-    	  @Override
-    	  public void onClick(View v) {
-    		  
-			  Intent intent = new Intent();
-			  intent.setClass(getActivity().getBaseContext() , FourActivity.class);
-			  intent.putExtra("mode", mode);
-			  startActivity(intent); 
-			  //Intent intent = new Intent(MainActivity.class , FourActivity.class);
-    	  }  
-      };
+    OnClickListener onClick = new OnClickListener() {    
+    	String mode = "";
+    	@Override
+    	public void onClick(View v) {    		  
+    		Intent intent = new Intent();
+			intent.setClass(getActivity().getBaseContext() , FourActivity.class);
+			intent.putExtra("mode", mode);
+			startActivity(intent); 
+			//Intent intent = new Intent(MainActivity.class , FourActivity.class);
+    	}  
+    };
 }

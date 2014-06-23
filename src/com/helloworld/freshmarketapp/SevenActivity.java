@@ -43,11 +43,11 @@ public class SevenActivity extends Activity {
 		@Override
 		public void onClick(View v) {
 			if(v.getId() == R.id.btn_previous4) {
-				//finish();
-				Intent intent = new Intent();
-				intent.setClass(SevenActivity.this , SixActivity.class);
-				intent.putExtra("content", content);
-				startActivity(intent);
+				finish();
+				//Intent intent = new Intent();
+				//intent.setClass(SevenActivity.this , SixActivity.class);
+				//intent.putExtra("content", content);
+				//startActivity(intent);
 			}			
 		}  
 	};

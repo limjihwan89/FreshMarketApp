@@ -2,16 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#5dcd9d"
     android:orientation="vertical" >
+   
     <EditText
-	    android:id="@+id/et_sms"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content" 
-	    android:editable="false"  />
+        android:id="@+id/et_sms"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:editable="false" />
     
     <Button
         android:id="@+id/btn_ok"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="승인" />
 
