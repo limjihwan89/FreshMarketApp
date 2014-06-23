@@ -12,7 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class FragmentTwo extends Fragment{
+public class FragmentTwo extends Fragment {
 
 	public static final String IMAGE_RESOURCE_ID = "iconResourceID";
 	public static final String ITEM_NAME = "itemName";
@@ -46,13 +46,15 @@ public class FragmentTwo extends Fragment{
 		// map.
 		if (mMap == null) {
 			// Try to obtain the map from the SupportMapFragment.
-			mMap = ((SupportMapFragment) MainActivity.fragmentManager.findFragmentById(R.id.map)).getMap();
+			mMap = ((SupportMapFragment) MainActivity.fragmentManager
+					.findFragmentById(R.id.map)).getMap();
 			// Check if we were successful in obtaining the map.
 			if (mMap != null) {
 				setUpMap();
 			}
 		}
 	}
+
 	/**
 	 * This is where we can add markers or lines, add listeners or move the
 	 * camera.
@@ -64,10 +66,12 @@ public class FragmentTwo extends Fragment{
 		// For showing a move to my loction button
 		mMap.setMyLocationEnabled(true);
 		// For dropping a marker at a point on the Map
-		mMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude)).title("거지같은 강남역")
+		mMap.addMarker(new MarkerOptions()
+				.position(new LatLng(latitude, longitude)).title("거지같은 강남역")
 				.snippet("Home Address"));
 		// For zooming automatically to the Dropped PIN Location
-		mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latitude, longitude), 12.0f));
+		mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(
+				latitude, longitude), 12.0f));
 	}
 
 	@Override
@@ -78,26 +82,30 @@ public class FragmentTwo extends Fragment{
 		}
 		if (mMap == null) {
 			// Try to obtain the map from the SupportMapFragment.
-			mMap = ((SupportMapFragment) MainActivity.fragmentManager.findFragmentById(R.id.map)).getMap();
+			mMap = ((SupportMapFragment) MainActivity.fragmentManager
+					.findFragmentById(R.id.map)).getMap();
 			// Check if we were successful in obtaining the map.
 			if (mMap != null) {
 				setUpMap();
 			}
 		}
 	}
+
 	/****
 	 * The mapfragment's id must be removed from the FragmentManager or else if
 	 * the same it is passed on the next time then app will crash
 	 ****/
-	//여기서부터 
+	// 여기서부터
 	@Override
 	public void onDestroyView() {
 		super.onDestroyView();
 		if (mMap != null) {
-			MainActivity.fragmentManager.beginTransaction().remove(MainActivity.fragmentManager
+			MainActivity.fragmentManager
+					.beginTransaction()
+					.remove(MainActivity.fragmentManager
 							.findFragmentById(R.id.map)).commit();
 			mMap = null;
 		}
 	}
-	//여기까지 없으면 그냥 지도 다시 못돌아감
+	// 여기까지 없으면 그냥 지도 다시 못돌아감
 }

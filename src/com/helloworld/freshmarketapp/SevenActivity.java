@@ -11,7 +11,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 public class SevenActivity extends Activity {
-	
+
 	TextView tvContent;
 	EditText etTitle;
 	EditText etPrice;
@@ -23,32 +23,33 @@ public class SevenActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-	
-		this.setContentView(R.layout.registration_five); 
-	
-		tvContent = (TextView)this.findViewById(R.id.tv_content);
-		etTitle = (EditText)this.findViewById(R.id.et_title);
-		etPrice = (EditText)this.findViewById(R.id.et_price);
-		etContent = (EditText)this.findViewById(R.id.et_content);
-		btnRegistration1 = (Button)this.findViewById(R.id.btn_registration1);
-		btnRegistration2 = (Button)this.findViewById(R.id.btn_registration2);
-		btnPrevious = (Button)this.findViewById(R.id.btn_previous4);
-    
+
+		this.setContentView(R.layout.registration_five);
+
+		tvContent = (TextView) this.findViewById(R.id.tv_content);
+		etTitle = (EditText) this.findViewById(R.id.et_title);
+		etPrice = (EditText) this.findViewById(R.id.et_price);
+		etContent = (EditText) this.findViewById(R.id.et_content);
+		btnRegistration1 = (Button) this.findViewById(R.id.btn_registration1);
+		btnRegistration2 = (Button) this.findViewById(R.id.btn_registration2);
+		btnPrevious = (Button) this.findViewById(R.id.btn_previous4);
+
 		btnPrevious.setOnClickListener(onClick);
-	
+
 	}
 
-	OnClickListener onClick = new OnClickListener() {    
+	OnClickListener onClick = new OnClickListener() {
 		String content = "";
+
 		@Override
 		public void onClick(View v) {
-			if(v.getId() == R.id.btn_previous4) {
+			if (v.getId() == R.id.btn_previous4) {
 				finish();
-				//Intent intent = new Intent();
-				//intent.setClass(SevenActivity.this , SixActivity.class);
-				//intent.putExtra("content", content);
-				//startActivity(intent);
-			}			
-		}  
+				// Intent intent = new Intent();
+				// intent.setClass(SevenActivity.this , SixActivity.class);
+				// intent.putExtra("content", content);
+				// startActivity(intent);
+			}
+		}
 	};
 }

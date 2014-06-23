@@ -12,40 +12,39 @@
         android:text="휴대폰번호" />
 
     <EditText
-	    android:id="@+id/getPhoneNum"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content" 
-	    android:editable="false" />
-    
+        android:id="@+id/getPhoneNum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:editable="false" />
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="비밀번호" />
-    
+
     <EditText
-	    android:id="@+id/setPassword"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content" 
-	    android:hint="비밀번호를 설정해주세요." />
-    
+        android:id="@+id/setPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="비밀번호를 설정해주세요." />
+
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="닉네임" />
-    
+
     <EditText
-	    android:id="@+id/setNickname"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content" 
-	    android:hint="닉네임을 설정해주세요." />
+        android:id="@+id/setNickname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="닉네임을 설정해주세요." />
 
     <Button
         android:id="@+id/btn_send1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
         android:text="인증번호 요청" />
 
 </LinearLayout>

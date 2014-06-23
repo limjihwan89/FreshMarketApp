@@ -9,14 +9,14 @@ import android.telephony.SmsMessage;
 import com.helloworld.freshmarketapp.SMSReceiverActivity;
 
 public class SMSReceiver extends BroadcastReceiver {
-	
+
 	public static String MESSAGE = "message";
 	private static final String SMS_RECEIVED = "android.provider.Telephony.SMS_RECEIVED";
 	public static String phoneNum;
-	
+
 	@Override
 	public void onReceive(Context context, Intent intent) {
-		
+
 		try {
 			if (intent.getAction().equals(SMS_RECEIVED)) {
 				Bundle bundle = intent.getExtras();
@@ -24,24 +24,27 @@ public class SMSReceiver extends BroadcastReceiver {
 					Object[] pdus = (Object[]) bundle.get("pdus");
 					final SmsMessage[] messages = new SmsMessage[pdus.length];
 					for (int i = 0; i < pdus.length; i++) {
-						messages[i] = SmsMessage.createFromPdu((byte[]) pdus[i]);
+						messages[i] = SmsMessage
+								.createFromPdu((byte[]) pdus[i]);
 						phoneNum = messages[i].getOriginatingAddress();
-					}					
-//					if (("0255555555").equals(phoneNum)) {
-//					if (("01045274825").equals(phoneNum)) {
+					}
+					// if (("0255555555").equals(phoneNum)) {
+					// if (("01045274825").equals(phoneNum)) {
 					if (("0255555555").equals(phoneNum)) {
-//					if (("01045274825").equals(phoneNum)) {
-//					if (("01088142160").equals(phoneNum)) { //지환
-//					if (("01085842163").equals(phoneNum)) {
-//					if (("01044690604").equals(phoneNum)) {						
+						// if (("01045274825").equals(phoneNum)) {
+						// if (("01088142160").equals(phoneNum)) { //지환
+						// if (("01085842163").equals(phoneNum)) {
+						// if (("01044690604").equals(phoneNum)) {
 						if (messages.length > -1) {
 							abortBroadcast();
-							Intent intent1 = new Intent(context, SMSReceiverActivity.class);
+							Intent intent1 = new Intent(context,
+									SMSReceiverActivity.class);
 							intent1.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-							intent1.putExtra(MESSAGE, messages[0].getMessageBody());
+							intent1.putExtra(MESSAGE,
+									messages[0].getMessageBody());
 							context.startActivity(intent1);
 							/*
-							 * intent.putExtra(MESSAGE, 
+							 * intent.putExtra(MESSAGE,
 							 * messages[0].getMessageBody());
 							 * intent.setClass(context, RedirectActivity.class);
 							 * intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -49,12 +52,12 @@ public class SMSReceiver extends BroadcastReceiver {
 							 */
 						}
 						System.out.println("여기2");
+					}
+					System.out.println("여기3");
 				}
-				System.out.println("여기3");
+				System.out.println("여기4");
 			}
-			System.out.println("여기4");
-		}
-		System.out.println("여기5");
+			System.out.println("여기5");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
