@@ -13,7 +13,6 @@ import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
@@ -26,7 +25,6 @@ import org.json.JSONObject;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -34,6 +32,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.view.InflateException;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,10 +63,10 @@ public class FragmentTwo extends Fragment {
 	private static ArrayList<String> getFilePath3;
 	private static ArrayList<Double> getGridX1;
 	private static ArrayList<Double> getGridY1;
-	private static ArrayList<Double> getGridX2;
-	private static ArrayList<Double> getGridY2;
-	private static ArrayList<Double> getGridX3;
-	private static ArrayList<Double> getGridY3;
+//	private static ArrayList<Double> getGridX2;
+//	private static ArrayList<Double> getGridY2;
+//	private static ArrayList<Double> getGridX3;
+//	private static ArrayList<Double> getGridY3;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -197,8 +196,12 @@ public class FragmentTwo extends Fragment {
 		// } catch (Exception e) {
 		// e.printStackTrace();
 		// }
-
-		view = inflater.inflate(R.layout.map, container, false);
+		try {
+			view = inflater.inflate(R.layout.map, container, false);
+		} catch (InflateException e) {
+			e.printStackTrace();
+		}
+		
 		// Passing harcoded values for latitude & longitude. Please change as
 		// per your need. This is just used to drop a Marker on the Map
 		latitude = 37.498134;
@@ -247,7 +250,7 @@ public class FragmentTwo extends Fragment {
 			HttpClient itemHttpClient = new DefaultHttpClient();
 
 			ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-			String phoneNumber = "죠까";
+			String phoneNumber = "후훗";
 			nameValuePairs.add(new BasicNameValuePair("phoneNumber",
 					phoneNumber));
 
@@ -285,7 +288,9 @@ public class FragmentTwo extends Fragment {
 				sb.append(line + "\n");
 			}
 			result = sb.toString();
-			System.out.println("이밑에 json데이터가 나오면 성공한것이다!!" + result);
+//			System.out.println("이밑에 json데이터가 나오면 성공한것이다!!" + result);
+			System.out.println("이밑에 json데이터가 나오면 성공한것이다!!");
+
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -414,17 +419,16 @@ public class FragmentTwo extends Fragment {
 	 * The mapfragment's id must be removed from the FragmentManager or else if
 	 * the same it is passed on the next time then app will crash
 	 ****/
-	// 여기서부터
+//	 여기서부터
 	@Override
 	public void onDestroyView() {
-		super.onDestroyView();
-		if (mMap != null) {
-			MainActivity.fragmentManager
-					.beginTransaction()
-					.remove(MainActivity.fragmentManager
-							.findFragmentById(R.id.map)).commit();
-			mMap = null;
-		}
+	    super.onDestroyView();
+	    if(view!=null){
+	        ViewGroup parent = (ViewGroup)view.getParent();
+	        if(parent!=null){
+	            parent.removeView(view);
+	        }
+	    }
 	}
-	// 여기까지 없으면 그냥 지도 다시 못돌아감
+//	 여기까지 없으면 그냥 지도 다시 못돌아감
 }
