@@ -30,6 +30,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import android.app.Fragment;
+import android.location.Location;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.InflateException;
@@ -49,6 +50,7 @@ public class FragmentTwo extends Fragment {
 	private static GoogleMap mMap;
 	private static Double latitude, longitude;
 	private static JSONArray jArr;
+	private static Location myLocation;
 
 	private static ArrayList<String> getUserNum;
 	private static ArrayList<String> getItemNum;
@@ -63,10 +65,11 @@ public class FragmentTwo extends Fragment {
 	private static ArrayList<String> getFilePath3;
 	private static ArrayList<Double> getGridX1;
 	private static ArrayList<Double> getGridY1;
-//	private static ArrayList<Double> getGridX2;
-//	private static ArrayList<Double> getGridY2;
-//	private static ArrayList<Double> getGridX3;
-//	private static ArrayList<Double> getGridY3;
+
+	// private static ArrayList<Double> getGridX2;
+	// private static ArrayList<Double> getGridY2;
+	// private static ArrayList<Double> getGridX3;
+	// private static ArrayList<Double> getGridY3;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -201,7 +204,7 @@ public class FragmentTwo extends Fragment {
 		} catch (InflateException e) {
 			e.printStackTrace();
 		}
-		
+
 		// Passing harcoded values for latitude & longitude. Please change as
 		// per your need. This is just used to drop a Marker on the Map
 		latitude = 37.498134;
@@ -239,8 +242,8 @@ public class FragmentTwo extends Fragment {
 		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
 				.permitAll().build();
 		StrictMode.setThreadPolicy(policy);
-		 final String itemURL = "http://192.168.200.80:3000/findItemList";
-//		final String itemURL = "http://192.168.219.107:3000/findItemList";
+		final String itemURL = "http://192.168.200.80:3000/findItemList";
+		// final String itemURL = "http://192.168.219.107:3000/findItemList";
 
 		InputStream itemIs = null;
 		String itemResult = "";
@@ -288,7 +291,7 @@ public class FragmentTwo extends Fragment {
 				sb.append(line + "\n");
 			}
 			result = sb.toString();
-//			System.out.println("이밑에 json데이터가 나오면 성공한것이다!!" + result);
+			// System.out.println("이밑에 json데이터가 나오면 성공한것이다!!" + result);
 			System.out.println("이밑에 json데이터가 나오면 성공한것이다!!");
 
 		} catch (UnsupportedEncodingException e) {
@@ -358,10 +361,40 @@ public class FragmentTwo extends Fragment {
 			e.printStackTrace();
 		}
 		mMap.setMyLocationEnabled(true);
-		// For dropping a marker at a point on the Map
-		mMap.addMarker(new MarkerOptions()
-				.position(new LatLng(latitude, longitude)).title("거지같은 강남역")
-				.snippet("Home Address"));
+		try {
+			myLocation = mMap.getMyLocation();
+			try {
+				System.out.println("Latitude: " + myLocation.getLatitude()
+						+ "\nLongitude: " + myLocation.getLongitude());
+			} catch (Exception e) {
+				System.out.println("여기여기 에러다1");
+				e.printStackTrace();
+				System.out.println("여기여기1");
+			}
+		} catch (Exception e) {
+			System.out.println("여기여기 에러다2");
+			e.printStackTrace();
+			System.out.println("여기여기2");
+		}
+		if (myLocation != null) {
+			mMap.addMarker(new MarkerOptions()
+					.position(
+							new LatLng(myLocation.getLatitude(), myLocation
+									.getLongitude()))
+					.title("이런 세상에나")
+					.snippet("뭐냐 이거....")
+					.icon(BitmapDescriptorFactory
+							.fromResource(R.drawable.people)));
+			System.out.println("여기여기3");
+		} else {
+			mMap.addMarker(new MarkerOptions()
+					.position(new LatLng(latitude, longitude))
+					.title("이런 세상에나")
+					.snippet("뭐냐 이거....")
+					.icon(BitmapDescriptorFactory
+							.fromResource(R.drawable.people)));
+			System.out.println("여기여기4");
+		}
 		for (int j = 0; j < jArr.length(); j++) {
 			// System.out.println("좌표X" + j + " : " + getGridX1.get(j));
 			// System.out.println("좌표Y" + j + " : " + getGridY1.get(j));
@@ -394,8 +427,15 @@ public class FragmentTwo extends Fragment {
 			}
 		}
 		// For zooming automatically to the Dropped PIN Location
-		mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(
-				latitude, longitude), 12.0f));
+		if (myLocation == null) {
+			mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(
+					latitude, longitude), 12.0f));
+			System.out.println("여기여기5");
+		} else {
+			mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(
+					myLocation.getLatitude(), myLocation.getLongitude()), 12.0f));
+			System.out.println("여기여기6");
+		}
 	}
 
 	@Override
@@ -419,16 +459,16 @@ public class FragmentTwo extends Fragment {
 	 * The mapfragment's id must be removed from the FragmentManager or else if
 	 * the same it is passed on the next time then app will crash
 	 ****/
-//	 여기서부터
+	// 여기서부터
 	@Override
 	public void onDestroyView() {
-	    super.onDestroyView();
-	    if(view!=null){
-	        ViewGroup parent = (ViewGroup)view.getParent();
-	        if(parent!=null){
-	            parent.removeView(view);
-	        }
-	    }
+		super.onDestroyView();
+		if (view != null) {
+			ViewGroup parent = (ViewGroup) view.getParent();
+			if (parent != null) {
+				parent.removeView(view);
+			}
+		}
 	}
-//	 여기까지 없으면 그냥 지도 다시 못돌아감
+	// 여기까지 없으면 그냥 지도 다시 못돌아감
 }
