@@ -12,17 +12,18 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import android.os.Bundle;
-import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.FragmentManager;
 import android.content.Intent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-@SuppressLint("UseValueOf")
 public class RegiLocationActivity extends Activity implements OnMapLongClickListener{
 	
 	class MyInfoWindowAdapter implements InfoWindowAdapter{
@@ -56,16 +57,15 @@ public class RegiLocationActivity extends Activity implements OnMapLongClickList
 	GoogleMap myMap;
 	//TextView tvLocInfo;
 	Button okBtn;
+	private static String locationCoordi;
 	Intent intent = new Intent();
 	private static Double latitude, longitude;
-	public static Double gridX, gridY;
-	public static String locationCoordi;
-	
+		
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.regi_map);
-                
+        
 		latitude = 37.498134;
 		longitude = 127.027600;
 		
@@ -110,24 +110,16 @@ public class RegiLocationActivity extends Activity implements OnMapLongClickList
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
-			if(gridX != null && gridY != null) {
-				System.out.println("null이 아니어야 정상! " + gridX + ", " + gridY);
-				//Intent intent = new Intent();
-				intent.setClass(RegiLocationActivity.this, FourActivity.class);
-				intent.putExtra("location", locationCoordi);
-				startActivity(intent);
-			} else if(gridX == null && gridY == null) {
-				System.out.println("null이어야 정상! " + gridX + ", " + gridY);
-				Toast.makeText(RegiLocationActivity.this, 
-						"위치를 등록해주세요.", 
-						Toast.LENGTH_LONG).show();
-			}
+			Intent intent = new Intent();
+			intent.setClass(RegiLocationActivity.this, FourActivity.class);
+			intent.putExtra("location", locationCoordi);
+			startActivity(intent);
 		}   	
     };
     
 	@Override
 	protected void onResume() {
-		
+
 		super.onResume();		
 		int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext());		
 		if (resultCode == ConnectionResult.SUCCESS){
@@ -136,9 +128,9 @@ public class RegiLocationActivity extends Activity implements OnMapLongClickList
 					Toast.LENGTH_LONG).show();	
 		}else{
 			GooglePlayServicesUtil.getErrorDialog(resultCode, this, RQS_GooglePlayServices);	
-		}
-	}	
-		
+		} 
+	}
+
 	@Override
 	public void onMapLongClick(LatLng point) {
 		//tvLocInfo.setText("새로운 위치 등록 " + point.toString());
@@ -146,15 +138,11 @@ public class RegiLocationActivity extends Activity implements OnMapLongClickList
 								.position(point)
 								.snippet(point.toString()));		
 		newMarker.setTitle(newMarker.getId());
+		locationCoordi = point.toString();
+		System.out.println("가져올 위치 좌표 : " + locationCoordi);
 		
-		gridX = Double.parseDouble(point.toString().substring(10, 19));
-		gridY = Double.parseDouble(point.toString().substring(29, 38));
-		System.out.println("가져올 위치 좌표 : " + gridX + ", " + gridY);
-		locationCoordi = gridX + ", " + gridY;
-		System.out.println("담을 데이터 : " + locationCoordi);
-		
-		//intent.setClass(RegiLocationActivity.this, FourActivity.class);
-		//intent.putExtra("location", point);
-		//startActivity(intent);
+		intent.setClass(RegiLocationActivity.this, FourActivity.class);
+		intent.putExtra("location", point);
+		startActivity(intent);
 	}
 }

@@ -35,7 +35,7 @@ public class MainActivity extends FragmentActivity {
 	public static FragmentManager fragmentManager;
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState) { 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
@@ -51,9 +51,9 @@ public class MainActivity extends FragmentActivity {
 				GravityCompat.START);
 
 		// Add Drawer Item to dataList
-		dataList.add(new DrawerItem("지도", R.drawable.map3));
-		dataList.add(new DrawerItem("물품검색", R.drawable.search3));
-		dataList.add(new DrawerItem("물품등록", R.drawable.add3_2));
+		dataList.add(new DrawerItem("지도", R.drawable.map));
+		dataList.add(new DrawerItem("물품검색", R.drawable.searchresize));
+		dataList.add(new DrawerItem("물품등록", R.drawable.cloudadd1));
 		dataList.add(new DrawerItem("거래현황", R.drawable.deal3));
 		dataList.add(new DrawerItem("설정", R.drawable.setting3));
 
