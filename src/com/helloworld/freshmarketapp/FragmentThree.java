@@ -74,9 +74,7 @@ public class FragmentThree extends Fragment {
 				intent.setClass(getActivity().getBaseContext(), FourActivity.class);
 				intent.putExtra("stateCode", stateCode);
 				startActivity(intent);
-			} else if(stateCode == null) {
-				System.out.println("여기서 에러가 나는것인가");
-				//System.out.println(stateCode);
+			} else {
 				Context context = getActivity().getBaseContext();
 				Toast.makeText(context, 
 						"삽니다/팝니다 를 선택해주세요.", 
