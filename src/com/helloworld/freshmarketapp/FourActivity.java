@@ -25,10 +25,12 @@ public class FourActivity extends Activity {
 	Button btnNext2;
 	
 	public static String locationData = "";
-	//Intent intent = new Intent();
+	public static String stateCode = "";
 	
-	LocationManager gLocMan;
-	Geocoder gCoder;
+	Intent intent;
+	
+	//LocationManager gLocMan;
+	//Geocoder gCoder;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -49,13 +51,20 @@ public class FourActivity extends Activity {
 		btnLocation2.setOnClickListener(onClick);
 		btnNext2.setOnClickListener(onClick);
 		
-		gCoder = new Geocoder(this, Locale.KOREAN);
+		//gCoder = new Geocoder(this, Locale.KOREAN);
+		
+		if(FragmentThree.stateCode != null) {
+			Intent intent2 = getIntent();			
+			stateCode = intent2.getStringExtra("stateCode");
+			System.out.println("사고 팔기 정보 : " + stateCode);
+		}
 		
 		if(RegiLocationActivity.gridX != null && RegiLocationActivity.gridY != null) {
-			Intent intent = getIntent();
-			locationData = intent.getStringExtra("location");
+			btnLocation1.setEnabled(false);
+			Intent intent1 = getIntent();
+			locationData = intent1.getStringExtra("location");
 			System.out.println("들어왔다!!!!!!!!!!!!!!!!! : " + locationData);
-			if(locationData != null) {
+			/*if(locationData != null) {
 				List<Address> addr;
 				try {
 					addr = gCoder.getFromLocation(RegiLocationActivity.gridX, RegiLocationActivity.gridY, 5);
@@ -67,7 +76,7 @@ public class FourActivity extends Activity {
 				} catch (IOException e) {
 					tvLocation2.setText(e.getMessage());
 				}				
-			}
+			}*/
 		}
 	}
 
@@ -81,34 +90,24 @@ public class FourActivity extends Activity {
 			// FiveActivity.class);
 			// FourActivity.this.startActivity(intent);
 			if (v.getId() == R.id.btn_next2) {
-				Intent intent1 = new Intent();
-				intent1.setClass(FourActivity.this, FiveActivity.class);
-				intent1.putExtra("location1", locationData);
-				startActivity(intent1);
+				//Intent intent1 = new Intent();
+				intent.setClass(FourActivity.this, FiveActivity.class);
+				intent.putExtra("location1", locationData);
+				startActivity(intent);
 			} else if (v.getId() == R.id.btn_previous1) {
 				finish();
-			} else if (v.getId() == R.id.btn_location1) {
-				// android.app.FragmentManager frgManager =
-				// getFragmentManager();
-				// sfrgManager.beginTransaction().replace(R.id.content_frame,
-				// new FragmentTwo()).commit();
-				//if (fragment == null) {
-				//	fm.beginTransaction().add(R.id.frame, new FragmentTwo(), "map").commit();
-				//}
-				//Intent intent = new Intent(FourActivity.this, RegiLocationActivity.class);
-				//FourActivity.this.startActivity(intent);
-				//System.out.println("좌표 있냐?? " + RegiLocationActivity.gridX + ", " + RegiLocationActivity.gridY);
-				Intent intent2 = new Intent();
-				intent2.setClass(FourActivity.this, RegiLocationActivity.class);
-				intent2.putExtra("location2", location2);
-				startActivity(intent2);
+			} else if (v.getId() == R.id.btn_location1) {;
+				//Intent intent2 = new Intent();
+				intent.setClass(FourActivity.this, RegiLocationActivity.class);
+				intent.putExtra("location2", location2);
+				startActivity(intent);
 			} else if (v.getId() == R.id.btn_location2) {
 				RegiLocationActivity.gridX = null;
 				RegiLocationActivity.gridY = null;
-				Intent intent2 = new Intent();
-				intent2.setClass(FourActivity.this, RegiLocationActivity.class);
-				intent2.putExtra("location2", location2);
-				startActivity(intent2);
+				//Intent intent2 = new Intent();
+				intent.setClass(FourActivity.this, RegiLocationActivity.class);
+				intent.putExtra("location2", location2);
+				startActivity(intent);
 			}
 		}
 	};

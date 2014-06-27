@@ -37,8 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="250dp"
-        android:text="선택된 위치의 주소" />
+        android:layout_marginBottom="250dp" />
 
     <LinearLayout
         android:layout_width="match_parent"

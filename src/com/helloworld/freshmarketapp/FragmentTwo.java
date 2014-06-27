@@ -82,128 +82,6 @@ public class FragmentTwo extends Fragment implements OnMarkerClickListener{
 		if (container == null) {
 			return null;
 		}
-		// // node통신
-		// StrictMode.ThreadPolicy policy = new
-		// StrictMode.ThreadPolicy.Builder()
-		// .permitAll().build();
-		// StrictMode.setThreadPolicy(policy);
-		// // final String itemURL = "http://192.168.200.80:3000/findItemList";
-		// final String itemURL = "http://192.168.219.107:3000/findItemList";
-		//
-		// InputStream itemIs = null;
-		// String itemResult = "";
-		// String result = "";
-		//
-		// try {
-		// HttpClient itemHttpClient = new DefaultHttpClient();
-		//
-		// ArrayList<NameValuePair> nameValuePairs = new
-		// ArrayList<NameValuePair>();
-		// String phoneNumber = "죠까";
-		// nameValuePairs.add(new BasicNameValuePair("phoneNumber",
-		// phoneNumber));
-		//
-		// HttpParams itemParams = itemHttpClient.getParams();
-		// HttpConnectionParams.setConnectionTimeout(itemParams, 1000000);
-		// HttpConnectionParams.setSoTimeout(itemParams, 1000000);
-		//
-		// HttpPost itemHttpPost = new HttpPost(itemURL);
-		// // HttpGet itemHttpGet = new HttpGet(itemURL);
-		// UrlEncodedFormEntity itemEntityRequest = new UrlEncodedFormEntity(
-		// nameValuePairs, "UTF-8");
-		// itemHttpPost.setEntity(itemEntityRequest);
-		//
-		// HttpResponse itemHttpResponse = itemHttpClient
-		// .execute(itemHttpPost);
-		// HttpEntity itemHttpEntity = itemHttpResponse.getEntity();
-		// itemIs = itemHttpEntity.getContent();
-		//
-		// HttpResponse dbHttpResponse = itemHttpClient.execute(itemHttpPost);
-		// HttpEntity dbHttpEntity = dbHttpResponse.getEntity();
-		// itemIs = dbHttpEntity.getContent();
-		//
-		// } catch (ClientProtocolException e) {
-		// e.printStackTrace();
-		// } catch (IOException e) {
-		// e.printStackTrace();
-		// }
-		// try {
-		// BufferedReader br = new BufferedReader(new InputStreamReader(
-		// itemIs, "UTF-8"));
-		// StringBuilder sb = new StringBuilder();
-		//
-		// String line = null;
-		// while ((line = br.readLine()) != null) {
-		// sb.append(line + "\n");
-		// }
-		// result = sb.toString();
-		// System.out.println("이밑에 json데이터가 나오면 성공한것이다!!" + result);
-		// } catch (UnsupportedEncodingException e) {
-		// e.printStackTrace();
-		// } catch (IOException e) {
-		// e.printStackTrace();
-		// }
-		//
-		// try {
-		// System.out.println("디버깅1 : 출력된 데이터 JSON객체화 시작");
-		// jArr = new JSONArray(result);
-		// System.out.println(jArr.length() + "개의 데이터");
-		// // JSONObject json = jArr.getJSONObject(0);
-		// // System.out.println(json);
-		//
-		// System.out.println("디버깅2 : JSONObject파싱 시작");
-		// getUserNum = new ArrayList<>();
-		// getItemNum = new ArrayList<>();
-		// getItemName = new ArrayList<>();
-		// getItemInfo = new ArrayList<>();
-		// getPrice = new ArrayList<>();
-		// getStateCode = new ArrayList<>();
-		// getCategory1 = new ArrayList<>();
-		// getCategory2 = new ArrayList<>();
-		// getFilePath1 = new ArrayList<>();
-		// getFilePath2 = new ArrayList<>();
-		// getFilePath3 = new ArrayList<>();
-		// getGridX1 = new ArrayList<>();
-		// getGridY1 = new ArrayList<>();
-		// getGridX2 = new ArrayList<>();
-		// getGridY2 = new ArrayList<>();
-		// getGridX3 = new ArrayList<>();
-		// getGridY3 = new ArrayList<>();
-		// for (int i = 0; i < jArr.length(); i++) {
-		// // json = jArr.getJSONObject(i);
-		// // 0번째 부터 즉, [{...}, {...}, ...] JsonArray안의 0번째 JsonObject
-		// // ==> { }
-		// // 를 getJsonObject로 가져와서 JSONObject안에 넣어준후
-		// // getJsonData.add(jArr.getString("item_name"));
-		// // getJsonData.add(jArr.getString("item_info"));
-		// // getJsonData.add(jArr.getString("price"));
-		// // getJsonData.add(jArr.getString("grid_x1"));
-		// // getJsonData.add(jArr.getString("grid_y1"));
-		// // String배열에 해당 key의 value값을 넣어준다.
-		// JSONObject json = jArr.getJSONObject(i);
-		// getUserNum.add(json.getString("user_no"));
-		// getItemNum.add(json.getString("item_no"));
-		// getItemName.add(json.getString("item_name"));
-		// getItemInfo.add(json.getString("item_info"));
-		// getPrice.add(json.getString("price"));
-		// getStateCode.add(json.getString("state_code"));
-		// getCategory1.add(json.getString("category1"));
-		// getCategory2.add(json.getString("category2"));
-		// getFilePath1.add(json.getString("filepath1"));
-		// getFilePath2.add(json.getString("filepath2"));
-		// getFilePath3.add(json.getString("filepath3"));
-		// getGridX1.add(json.getDouble("grid_x1"));
-		// getGridY1.add(json.getDouble("grid_y1"));
-		// getGridX2.add(json.getDouble("grid_x2"));
-		// getGridY2.add(json.getDouble("grid_y2"));
-		// getGridX3.add(json.getDouble("grid_x3"));
-		// getGridY3.add(json.getDouble("grid_y3"));
-		// }
-		// } catch (JSONException e) {
-		// e.printStackTrace();
-		// } catch (Exception e) {
-		// e.printStackTrace();
-		// }
 		try {
 			view = inflater.inflate(R.layout.map, container, false);
 		} catch (InflateException e) {
@@ -260,8 +138,7 @@ public class FragmentTwo extends Fragment implements OnMarkerClickListener{
 		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
 				.permitAll().build();
 		StrictMode.setThreadPolicy(policy);
-		final String itemURL = "http://192.168.200.80:3000/findItemList";
-		// final String itemURL = "http://192.168.219.107:3000/findItemList";
+		final String itemURL = "http://192.168.200.43:3000/findItemList";
 
 		InputStream itemIs = null;
 		String itemResult = "";

@@ -16,6 +16,8 @@ public class FiveActivity extends Activity {
 	TextView tvImage2;
 	Button btnPrevious2;
 	Button btnNext3;
+	
+	Intent intent;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -40,11 +42,12 @@ public class FiveActivity extends Activity {
 		@Override
 		public void onClick(View v) {
 			if (v.getId() == R.id.btn_next3) {
-				Intent intent = new Intent(FiveActivity.this, SixActivity.class);
+				intent = new Intent(FiveActivity.this, SixActivity.class);
 				intent.putExtra("Image", Image);
 				FiveActivity.this.startActivity(intent);
 			} else if (v.getId() == R.id.btn_previous2) {
-				finish();
+				intent = new Intent(FiveActivity.this, FourActivity.class);
+				FiveActivity.this.startActivity(intent);
 			}
 		}
 	};
