@@ -70,6 +70,8 @@
         <activity android:name="com.helloworld.freshmarketapp.SixActivity" />
         <activity android:name="com.helloworld.freshmarketapp.SevenActivity" />
         <activity android:name="com.helloworld.freshmarketapp.TestActivity" />
+        <activity android:name="com.helloworld.freshmarketapp.RegiLocationActivity" />
+        
     </application>
 
 </manifest>
