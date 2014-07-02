@@ -42,7 +42,7 @@ public class FragmentOne extends Fragment {
 				.findViewById(R.id.EditText_Money_Max);
 		button_search = (Button) view.findViewById(R.id.button_search);
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
-				getActivity().getBaseContext(), R.array.categories,
+				getActivity().getBaseContext(), R.array.categories1,
 				android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
 		spinner.setAdapter(adapter);

@@ -9,7 +9,7 @@
     <string name="hintPassword">비밀번호를 입력해주세요</string>
     <string name="hintNickname">닉네임을 입력해주세요</string>
 
-    <string-array name="categories">
+    <string-array name="categories1">
         <item>대분류 선택</item>
         <item>의류</item>
         <item>수입명품</item>
@@ -18,5 +18,197 @@
         <item>출산/육아</item>
         <item>모바일</item>
         <item>컴퓨터</item>
+        <item>카메라</item>
+        <item>영상기기</item>
+        <item>음악/음향/악기</item>
+        <item>게임용품</item>
+        <item>스포츠/취미</item>
+        <item>여행</item>
+        <item>생활용품</item>
+        <item>가구</item>
+        <item>예술/미술</item>
+        <item>도서관련</item>
     </string-array>
+    
+    <string-array name="categories2">
+        <item>소분류 선택</item>
+    </string-array>
+    
+    <string-array name="clothes">
+        <item>캐쥬얼상의</item>
+        <item>캐쥬얼하의</item>
+        <item>여성상의</item>
+        <item>여성하의</item>
+        <item>남성상의</item>
+        <item>남성하의</item>
+        <item>파티/잠옷/작업복</item>
+    </string-array>
+    
+    <string-array name="imports">
+        <item>루이비통</item>
+        <item>샤넬</item>
+        <item>버버리/마크제이콥스</item>
+        <item>불가리/까르띠에</item>
+        <item>구찌/프라다</item>
+        <item>디올/입생로랑</item>
+        <item>에르메스/콜롬보</item>
+        <item>발리/에트로/페라가모</item>
+        <item>기타 수입명품</item>
+    </string-array>   
+    
+    <string-array name="fashion">
+        <item>여성신발</item>
+        <item>남성신발</item>
+        <item>가방/모자/장갑</item>
+        <item>지갑/벨트/시계</item>
+        <item>안경/선글라스</item>
+        <item>쥬얼리/악세사리</item>
+        <item>기타 패션잡화</item>
+    </string-array>
+    
+    <string-array name="beauty">
+        <item>여성 기초화장품</item>
+        <item>여성 색조화장품</item>
+        <item>남성 화장품</item>
+        <item>향수/아로마</item>
+        <item>헤어/바디케어</item>
+        <item>요가/운동용품</item>
+        <item>기타 미용</item>
+    </string-array>
+    
+    <string-array name="layette">
+        <item>출산/임부용품</item>
+        <item>유아/아동의류</item>
+        <item>유아/아동용품</item>
+        <item>인형/장난감</item>
+        <item>유아책/교육</item>
+    </string-array>
+    
+    <string-array name="mobile">
+        <item>SKT</item>
+        <item>KT</item>
+        <item>LGU+</item>
+        <item>기타통신사/피처폰</item>
+        <item>주변기기/악세사리</item>
+    </string-array>
+    
+    <string-array name="computer">
+        <item>노트북/넷북</item>
+        <item>테블릿PC</item>
+        <item>데스크탑/본체</item>
+        <item>모니터</item>
+        <item>CPU/메인보드/HDD</item>
+        <item>메모리/VGA/ODD</item>
+        <item>케이스/키보드마우스</item>
+        <item>복합기/프린터</item>
+        <item>USB/케이블/스피커</item>
+        <item>허브/무선랜/공유기</item>
+        <item>잉크/토너/공CD</item>
+        <item>PC게임/소프트웨어</item>
+        <item>기타 제품/PC파워</item>
+    </string-array>
+    
+    <string-array name="camera">
+        <item>DSLR</item>
+        <item>미러리스</item>
+        <item>일반디카/하이엔드</item>
+        <item>필름/중형카메라</item>
+        <item>렌즈/필터/컨버터</item>
+        <item>삼각대/플래시/조명</item>
+        <item>메모리/배터리/가방</item>
+        <item>기타 카메라악세사리</item>
+    </string-array>
+    
+    <string-array name="imagingDevice">
+        <item>디지털TV</item>
+        <item>DVD/VCR</item>
+        <item>PMP/DMB</item>
+        <item>셋톱박스/프로젝터</item>
+        <item>디지털 캠코더</item>
+        <item>편집기기/소프트웨어</item>
+        <item>기타 영상관련제품</item>
+    </string-array>
+    
+    <string-array name="music">
+        <item>MP3/CDP</item>
+        <item>오디오/홈시어터</item>
+        <item>헤드폰/스피커/앰프</item>
+        <item>기타 음향기기</item>
+        <item>LP/CD/DVD 음반</item>
+        <item>건반악기</item>
+        <item>관악기</item>
+        <item>현악기</item>
+        <item>타악기</item>
+    </string-array>
+    
+    <string-array name="game">
+        <item>NDSL/WII/닌텐도</item>
+        <item>PSP/PS2/PS3/PS4</item>
+        <item>XBOX360</item>
+        <item>게임소프트웨어</item>
+        <item>기타 게임용품</item>
+    </string-array>
+    
+    <string-array name="sports">
+        <item>축구용품/의류</item>
+        <item>야구용품/의류</item>
+        <item>농구용품/의류</item>
+        <item>MTB사이클 용품/의류</item>
+        <item>미니벨로/일반자전거</item>
+        <item>인라인/스케이트보드</item>
+        <item>스키/보드/의류</item>
+        <item>골프용품/의류</item>
+        <item>헬스/수영/용품/의류</item>
+        <item>피규어/프라모델/브릭</item>
+        <item>기타스포츠/레저용품</item>
+    </string-array>
+    
+    <string-array name="travle">
+        <item>등산용품/의류</item>
+        <item>캠핑용품/장비</item>
+        <item>낚시용품/의류</item>
+        <item>숙박권/시설 이용권</item>
+    </string-array>
+    
+    <string-array name="dailySupplies">
+        <item>사무용품/복사기/팩스</item>
+        <item>대형가전/TV/냉장고/세탁기/에어컨</item>
+        <item>소형가전/밥솥/다리미/가습기/면도기</item>
+        <item>침구/커튼/패브릭</item>
+        <item>욕실용품/주방용품</item>
+        <item>전자사전/MC스퀘어</item>
+        <item>상품권/판매가능티켓</item>
+        <item>반려동물 용품</item>
+        <item>DIY/리폼 용품,공구</item>
+        <item>학습도구/문구</item>
+        <item>기타 중고</item>
+    </string-array>
+    
+    <string-array name="furniture">
+        <item>침실/침대/화장대</item>
+        <item>거실/쇼파/테이블</item>
+        <item>주방/식탁/수납장</item>
+        <item>사무용품/책상/서랍</item>
+        <item>인테리어소품</item>
+    </string-array>
+    
+    <string-array name="art">
+        <item>서양/동양/현대작품</item>
+        <item>미술재료/물감/마카</item>
+        <item>미술용품도구</item>
+        <item>골동품/기타수집</item>
+    </string-array>
+    
+    <string-array name="book">
+        <item>학습/사전/참고서</item>
+        <item>문학/과학/경영</item>
+        <item>월간/계간/잡지</item>
+        <item>여행/취미/레저</item>
+        <item>예술/디자인도서</item>
+        <item>컴퓨터/인터넷도서</item>
+        <item>아동/어린이도서</item>
+        <item>소설/만화책</item>
+        <item>전집</item>
+    </string-array>
+    
 </resources>

@@ -26,9 +26,7 @@ public class FourActivity extends Activity {
 	
 	public static String locationData = "";
 	public static String stateCode = "";
-	
-	Intent intent;
-	
+		
 	//LocationManager gLocMan;
 	//Geocoder gCoder;
 	
@@ -54,8 +52,8 @@ public class FourActivity extends Activity {
 		//gCoder = new Geocoder(this, Locale.KOREAN);
 		
 		if(FragmentThree.stateCode != null) {
-			Intent intent2 = getIntent();			
-			stateCode = intent2.getStringExtra("stateCode");
+			Intent intent4 = getIntent();			
+			stateCode = intent4.getStringExtra("stateCode");
 			System.out.println("사고 팔기 정보 : " + stateCode);
 		}
 		
@@ -83,31 +81,29 @@ public class FourActivity extends Activity {
 	OnClickListener onClick = new OnClickListener() {
 
 		String location2 = "";
-
+		//Intent intent1;
+		
 		@Override
 		public void onClick(View v) {
-			// Intent intent = new Intent(FourActivity.this,
-			// FiveActivity.class);
-			// FourActivity.this.startActivity(intent);
 			if (v.getId() == R.id.btn_next2) {
-				//Intent intent1 = new Intent();
-				intent.setClass(FourActivity.this, FiveActivity.class);
-				intent.putExtra("location1", locationData);
-				startActivity(intent);
+				Intent intent1 = new Intent();
+				intent1.setClass(FourActivity.this, FiveActivity.class);
+				intent1.putExtra("location2", locationData);
+				startActivity(intent1);
 			} else if (v.getId() == R.id.btn_previous1) {
 				finish();
 			} else if (v.getId() == R.id.btn_location1) {;
-				//Intent intent2 = new Intent();
-				intent.setClass(FourActivity.this, RegiLocationActivity.class);
-				intent.putExtra("location2", location2);
-				startActivity(intent);
+				Intent intent2 = new Intent();
+				intent2.setClass(FourActivity.this, RegiLocationActivity.class);
+				intent2.putExtra("location2", location2);
+				startActivity(intent2);
 			} else if (v.getId() == R.id.btn_location2) {
+				Intent intent3 = new Intent();
 				RegiLocationActivity.gridX = null;
 				RegiLocationActivity.gridY = null;
-				//Intent intent2 = new Intent();
-				intent.setClass(FourActivity.this, RegiLocationActivity.class);
-				intent.putExtra("location2", location2);
-				startActivity(intent);
+				intent3.setClass(FourActivity.this, RegiLocationActivity.class);
+				intent3.putExtra("location2", location2);
+				startActivity(intent3);
 			}
 		}
 	};
